@@ -116,7 +116,7 @@ class TestRegister():
 
 
 if __name__ == "__main__":
-    excel = FileExcelReader('Book1.xlsx', 'Sheet1')
+    excel = FileExcelReader('SecA_reg_data.xlsx', 'Sheet1')
 
     test = TestRegister()
     test.setup_method()
