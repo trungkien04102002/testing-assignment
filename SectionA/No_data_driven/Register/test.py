@@ -22,7 +22,7 @@ class TestLogin(unittest.TestCase):
             err = 'Element with id {} could not be found!'
             raise Exception(err.format(element_id))
 
-    def test_10(self): # Done
+    def test_16(self): # Done
         self.driver.get('http://localhost:8000/registration.php')
         username = self.driver.find_element(By.NAME,"username")
         fname = self.driver.find_element(By.NAME,"firstname")
@@ -33,18 +33,18 @@ class TestLogin(unittest.TestCase):
         rpassword = self.driver.find_element(By.NAME,"cpassword")
         address = self.driver.find_element(By.NAME,"address")
         submitBtn = self.driver.find_element(By.NAME,"submit")
-        username.send_keys("thienphu1")
-        fname.send_keys("Thien")
-        lname.send_keys("Phu")
-        email.send_keys("kien1234567@gmail.com")
-        phone.send_keys("0979719")
-        password.send_keys("Kien1234")
-        rpassword.send_keys("Kien1234")
-        address.send_keys("Viet Nam")
+        username.send_keys("hoangnguyen")
+        fname.send_keys("Hoang")
+        lname.send_keys("Nguyen")
+        email.send_keys("hoang123456@gmail.com")
+        phone.send_keys("0979719586")
+        password.send_keys("abcdef")
+        rpassword.send_keys("abcdef")
+        address.send_keys("")
         submitBtn.click()
         time.sleep(2) 
         errorNotification = self.driver.find_element(By.XPATH,'/html/body/div/div/div/ul/li/a/span[1]')
-        assert errorNotification.text == "invalid phone number!"    
+        assert errorNotification.text == "All fields must be Required!"
         
         
    

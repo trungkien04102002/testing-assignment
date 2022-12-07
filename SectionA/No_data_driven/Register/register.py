@@ -259,7 +259,7 @@ class TestLogin(unittest.TestCase):
         submitBtn.click()
         time.sleep(2) 
         errorNotification = self.driver.find_element(By.XPATH,'/html/body/div/div/div/ul/li/a/span[1]')
-        assert errorNotification.text == "Invalid phone number!"  
+        assert errorNotification.text == "invalid phone number!"    
 
     def test_11(self): # Done
         self.driver.get('http://localhost:8000/registration.php')
@@ -356,6 +356,55 @@ class TestLogin(unittest.TestCase):
         time.sleep(2) 
         errorNotification = self.driver.find_element(By.XPATH,'/html/body/div/div/div/ul/li/a/span[1]')
         assert errorNotification.text == "All fields must be Required!"
+    
+    def test_15(self): # Done
+        self.driver.get('http://localhost:8000/registration.php')
+        username = self.driver.find_element(By.NAME,"username")
+        fname = self.driver.find_element(By.NAME,"firstname")
+        lname = self.driver.find_element(By.NAME,"lastname")
+        email = self.driver.find_element(By.NAME,"email")
+        phone = self.driver.find_element(By.NAME,"phone")
+        password = self.driver.find_element(By.NAME,"password")
+        rpassword = self.driver.find_element(By.NAME,"cpassword")
+        address = self.driver.find_element(By.NAME,"address")
+        submitBtn = self.driver.find_element(By.NAME,"submit")
+        username.send_keys("hoangnguyen")
+        fname.send_keys("Hoang")
+        lname.send_keys("Nguyen")
+        email.send_keys("hoang123456@gmail.com")
+        phone.send_keys("0979719586")
+        password.send_keys("abcdef")
+        rpassword.send_keys("abcdefghik")
+        address.send_keys("Viet Nam")
+        submitBtn.click()
+        time.sleep(2) 
+        errorNotification = self.driver.find_element(By.XPATH,'/html/body/div/div/div/ul/li/a/span[1]')
+        assert errorNotification.text == "Password not match"
+
+    def test_16(self): # Done
+        self.driver.get('http://localhost:8000/registration.php')
+        username = self.driver.find_element(By.NAME,"username")
+        fname = self.driver.find_element(By.NAME,"firstname")
+        lname = self.driver.find_element(By.NAME,"lastname")
+        email = self.driver.find_element(By.NAME,"email")
+        phone = self.driver.find_element(By.NAME,"phone")
+        password = self.driver.find_element(By.NAME,"password")
+        rpassword = self.driver.find_element(By.NAME,"cpassword")
+        address = self.driver.find_element(By.NAME,"address")
+        submitBtn = self.driver.find_element(By.NAME,"submit")
+        username.send_keys("hoangnguyen")
+        fname.send_keys("Hoang")
+        lname.send_keys("Nguyen")
+        email.send_keys("hoang123456@gmail.com")
+        phone.send_keys("0979719586")
+        password.send_keys("abcdef")
+        rpassword.send_keys("abcdef")
+        address.send_keys("")
+        submitBtn.click()
+        time.sleep(2) 
+        errorNotification = self.driver.find_element(By.XPATH,'/html/body/div/div/div/ul/li/a/span[1]')
+        assert errorNotification.text == "All fields must be Required!"
+         
         
    
     def tearDown(self):
