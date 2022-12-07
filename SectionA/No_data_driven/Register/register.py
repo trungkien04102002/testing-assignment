@@ -305,6 +305,7 @@ class TestLogin(unittest.TestCase):
         rpassword.send_keys("abc")
         address.send_keys("Viet Nam")
         submitBtn.click()
+        
         time.sleep(2) 
         errorNotification = self.driver.find_element(By.XPATH,'/html/body/div/div/div/ul/li/a/span[1]')
         assert errorNotification.text == "All fields must be Required!"
