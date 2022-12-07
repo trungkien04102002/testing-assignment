@@ -8,7 +8,6 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
 from selenium.common.exceptions import NoSuchElementException
 
 class FileExcelReader:
@@ -124,14 +123,14 @@ if __name__ == "__main__":
     nRows = excel.getRowCount()
     for row in range(2, nRows+1):
         username = str(excel.readData(row,1))
-        fname = str(excel.readData(row,2))
-        lname = str(excel.readData(row,3))
-        email = str(excel.readData(row,4))
-        phone = str(excel.readData(row,5))
-        password = str(excel.readData(row,6))
-        rpassword = str(excel.readData(row,7))
-        address = str(excel.readData(row,8))
-        expectedResult = str(excel.readData(row,9))
+        fname = excel.readData(row,2)
+        lname = excel.readData(row,3)
+        email = excel.readData(row,4)
+        phone = excel.readData(row,5)
+        password = excel.readData(row,6)
+        rpassword = excel.readData(row,7)
+        address = excel.readData(row,8)
+        expectedResult = excel.readData(row,9)
         if username is None:
             username = ""
         if fname is None:
