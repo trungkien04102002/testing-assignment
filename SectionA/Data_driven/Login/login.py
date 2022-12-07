@@ -86,8 +86,8 @@ if __name__ == "__main__":
     test.setup_method()
     nRows = excel.getRowCount()
     for row in range(2, nRows + 1):
-        username = str(excel.readData(row,1))
-        password = str(excel.readData(row,2))
+        username = excel.readData(row,1)
+        password = excel.readData(row,2)
         expectedResult = excel.readData(row,3)
         if username is None:
             username = ""
