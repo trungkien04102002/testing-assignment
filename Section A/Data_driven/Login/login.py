@@ -61,10 +61,8 @@ class TestLogin():
     usernameInput = self.driver.find_element(By.NAME,"username")
     passwordInput = self.driver.find_element(By.NAME,"password")
     submitBtn = self.driver.find_element(By.NAME,"submit")
-    if (username is not None):
-        usernameInput.send_keys(username)
-    if (password is not None):
-        passwordInput.send_keys(password)    
+    usernameInput.send_keys(username)
+    passwordInput.send_keys(password)    
     submitBtn.click()
     time.sleep(2)
     if expectedResult == "Success":
