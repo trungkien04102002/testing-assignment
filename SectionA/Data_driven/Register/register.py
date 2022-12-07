@@ -11,7 +11,6 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 from selenium.common.exceptions import NoSuchElementException
 
-count = 0 
 class FileExcelReader:
     file = ""
     sheetName = ""
@@ -93,7 +92,7 @@ class TestRegister():
         return True
     elif expectedResult == "MissedField":  #tc4
         errorNotification = self.driver.find_element(By.XPATH,'/html/body/div/div/div/ul/li/a/span[1]')
-        assert (errorNotification.text =="All fields must be Required!")
+        assert (errorNotification.text == "All fields must be Required!")
         return True
     elif expectedResult == "UsernameExist": #tc5
         errorNotification = self.driver.find_element(By.XPATH,'/html/body/div/div/div/ul/li/a/span[1]')
@@ -101,11 +100,11 @@ class TestRegister():
         return True
     elif expectedResult == "LengthPhoneError": #tc10
         errorNotification = self.driver.find_element(By.XPATH,'/html/body/div/div/div/ul/li/a/span[1]')
-        assert (errorNotification.text =="invalid phone number")
+        assert (errorNotification.text =="invalid phone number!")
         return True
     elif expectedResult == "InvalidPhoneSyntax": #tc11
         errorNotification = self.driver.find_element(By.XPATH,'/html/body/div/div/div/ul/li/a/span[1]')
-        assert (errorNotification.text =="invalid phone number")
+        assert (errorNotification.text =="invalid phone number!")
         return True
     elif expectedResult == "LengthPwdError": #tc13
         errorNotification = self.driver.find_element(By.XPATH,'/html/body/div/div/div/ul/li/a/span[1]')
@@ -132,10 +131,7 @@ if __name__ == "__main__":
         password = str(excel.readData(row,6))
         rpassword = str(excel.readData(row,7))
         address = str(excel.readData(row,8))
-        expectedResult = excel.readData(row,9)
-        print(username)
-        print(fname)
-        print(email)
+        expectedResult = str(excel.readData(row,9))
         if username is None:
             username = ""
         if fname is None:
@@ -153,11 +149,9 @@ if __name__ == "__main__":
         if address is None:
             address = ""  
         try:
-            result = test.test_login(username,fname,lname,email,phone,password,rpassword,address,expectedResult)
+            result = test.test_register(username,fname,lname,email,phone,password,rpassword,address,expectedResult)
             excel.writeData("Passed",row,10)
         except:
             excel.writeData("Failed",row,10)
-        count=count+1
-
 
     test.teardown_method()
