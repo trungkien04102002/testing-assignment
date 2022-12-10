@@ -57,22 +57,41 @@ class TestLogin():
 #     return True
 
   def test_login(self, username, password, expectedResult):
-    self.driver.get('http://localhost:8000/login.php')
+    self.driver.get('https://sso.hcmut.edu.vn/cas/login?service=https://mybk.hcmut.edu.vn/my/homeSSO.action')
     usernameInput = self.driver.find_element(By.NAME,"username")
     passwordInput = self.driver.find_element(By.NAME,"password")
     submitBtn = self.driver.find_element(By.NAME,"submit")
     usernameInput.send_keys(username)
     passwordInput.send_keys(password)    
     submitBtn.click()
-    time.sleep(2)
-    if expectedResult == "Success":
-        assert self.driver.current_url == 'http://localhost:8000/index.php'
-        logoutBtn = self.driver.find_element(By.XPATH,'//*[@id="mainNavbarCollapse"]/ul/li[4]/a')
+    time.sleep(3)
+    if expectedResult == "Success": #done
+        assert self.driver.current_url == 'https://mybk.hcmut.edu.vn/my/homeSSO.action'
+        logoutBtn = self.driver.find_element(By.XPATH,'/html/body/div[2]/div/div/div[2]/div/a[1]')
         logoutBtn.click()
+        alert = self.driver.switch_to.alert
+        time.sleep(1)
+        alert.accept()
+        time.sleep(1)
+        loginPageBtn = self.driver.find_element(By.XPATH,'/html/body/div[2]/div/div/div[2]/div/a[1]')
+        loginPageBtn.click()
+        time.sleep(2)
+        return True
+    elif expectedResult == "InvalidAccount": #done
+        errorNotification = self.driver.find_element(By.XPATH,'//*[@id="msg"]')
+        assert errorNotification.text == "The credentials you provided cannot be determined to be authentic."
+        return True
+    elif expectedResult == "MissedUsername": #done
+        errorNotification = self.driver.find_element(By.XPATH,'//*[@id="msg"]')
+        assert errorNotification.text == "Please enter your username."
+        return True
+    elif expectedResult == "MissedPwd": #done
+        errorNotification = self.driver.find_element(By.XPATH,'//*[@id="msg"]')
+        assert errorNotification.text == "Please enter your password."
         return True
     else:        
-        errorNotification = self.driver.find_element(By.XPATH,'/html/body/div[2]/div[2]/span[1]')
-        assert errorNotification.text == "Invalid Username or Password!"
+        errorNotification = self.driver.find_element(By.XPATH,'//*[@id="msg"]')
+        assert (errorNotification.text == "Please enter your username."  )
         return True
 
         
@@ -80,14 +99,13 @@ class TestLogin():
   
 
 if __name__ == "__main__":
-    excel = FileExcelReader('SecA_login_data.xlsx', 'Sheet1')
-
+    excel = FileExcelReader('SecB_login_data.xlsx', 'Sheet1')
     test = TestLogin()
     test.setup_method()
     nRows = excel.getRowCount()
     for row in range(2, nRows + 1):
-        username = str(excel.readData(row,1))
-        password = str(excel.readData(row,2))
+        username = excel.readData(row,1)
+        password = excel.readData(row,2)
         expectedResult = excel.readData(row,3)
         if username is None:
             username = ""
