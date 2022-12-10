@@ -51,8 +51,8 @@ class TestPrinTranscript():
     password = self.driver.find_element(By.NAME,"password")  
     submitBtn = self.driver.find_element(By.NAME,"submit")  
     
-    username.send_keys("")
-    password.send_keys("")
+    username.send_keys("phu.hahaphanthienphultt")
+    password.send_keys("123456789@")
     submitBtn.click()
   
   def teardown_method(self):
@@ -62,54 +62,14 @@ class TestPrinTranscript():
     self.driver.quit()
   
 
-  def test_printtranscript(self, selectCampus, quantity, confirm, expectedResult):
-    self.driver.get('https://mybk.hcmut.edu.vn/apps/src/inbd/index.aspx')
-    selectType = Select(self.driver.find_element(By.ID,"ctl00_ContentPlaceHolder1_cbo_loaidangkyin"))
-    selectType.select_by_value("TB")
-    
-    selectDest = Select(self.driver.find_element(By.ID,"ctl00_ContentPlaceHolder1_cbo_coso"))
-    if selectCampus == "yes":
-        selectDest.select_by_value("CS2")
-
-    
-    quantityInp = self.driver.find_element(By.ID,"ctl00_ContentPlaceHolder1_txt_soluong")
-    quantityInp.send_keys(quantity)
-
-    confirmInp = self.driver.find_element(By.ID,"ctl00_ContentPlaceHolder1_chk_allow")
-    if confirm == "yes":
-        confirmInp.click()
-    
-    submitBtn = self.driver.find_element(By.NAME,"ctl00$ContentPlaceHolder1$bnt_xacnhan")
-    
-    if expectedResult == "Success":
-        submitBtn.click()
-        time.sleep(2)
-        cancelPrint = self.driver.find_element(By.NAME,'ctl00$ContentPlaceHolder1$lst_dsphieu$ctl00$bnt_huyphieu')
-        cancelPrint.click()
-    elif expectedResult == "UnableBtn":        
-        assert not submitBtn.is_enabled()
-    elif expectedResult == "LackLocation":        
-        submitBtn.click()
-        time.sleep(2)
-        notification = self.driver.find_element(By.CSS_SELECTOR,'.msgBoxContent span')
-        assert notification.text == "Chọn nơi nhận kết quả"
-    elif expectedResult == "LackQuanity": 
-        submitBtn.click()
-        time.sleep(2)
-        notification = self.driver.find_element(By.CSS_SELECTOR,'.msgBoxContent span')
-        assert  "Nhập số lượng" == notification.text               
-    elif expectedResult == "InvalidQuantity":        
-        submitBtn.click()
-        time.sleep(2)
-        
-        notification = self.driver.find_element(By.CSS_SELECTOR,'.msgBoxContent span')
-        assert notification.text == "Số lượng in tối thiểu 1 và tối đa 9"
+  def test_submitcertificate(self, selectCampus, quantity, confirm, expectedResult):
+    return 
         
     
   
 
 if __name__ == "__main__":
-    excel = FileExcelReader('SecB_printrans_data.xlsx', 'Sheet1')
+    excel = FileExcelReader('SecB_submitcert_data', 'Sheet1')
 
     test = TestPrinTranscript()
     test.setup_method()
@@ -125,7 +85,7 @@ if __name__ == "__main__":
 
             
         try:
-            result = test.test_printtranscript(selectCampus,quantity,confirm,expectedResult)
+            result = test.test_submitcertificate(selectCampus,quantity,confirm,expectedResult)
             excel.writeData("Passed",row,5)
         except:
             excel.writeData("Failed",row,5)
