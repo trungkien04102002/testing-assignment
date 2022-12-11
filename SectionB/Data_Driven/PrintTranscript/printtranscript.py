@@ -51,8 +51,8 @@ class TestPrinTranscript():
     password = self.driver.find_element(By.NAME,"password")  
     submitBtn = self.driver.find_element(By.NAME,"submit")  
     
-    username.send_keys("")
-    password.send_keys("")
+    username.send_keys("dat.luongmason")
+    password.send_keys("123456789")
     submitBtn.click()
   
   def teardown_method(self):
