@@ -49,7 +49,7 @@ class TestLogin(unittest.TestCase):
         submitBtn = self.driver.find_element(By.NAME,"submit")
         username.send_keys("kien1234")
         password.send_keys("kien05111")
-        submitBtn.click()
+        submitBtn.click()  
         time.sleep(2)
         errorNotification = self.driver.find_element(By.XPATH,'//*[@id="msg"]')
         assert errorNotification.text == "The credentials you provided cannot be determined to be authentic."
