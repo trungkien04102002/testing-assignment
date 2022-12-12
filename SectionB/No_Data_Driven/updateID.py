@@ -25,8 +25,8 @@ class TestUpdateID(unittest.TestCase):
     def test_1(self): 
         self.driver.get('https://sso.hcmut.edu.vn/cas/login?service=http%3A%2F%2Fmybk.hcmut.edu.vn%2Fstinfo%2F')
 
-        self.driver.find_element(By.NAME,"username").send_keys("hoang.nguyen392")
-        self.driver.find_element(By.NAME,"password").send_keys("zmeb030902")
+        self.driver.find_element(By.NAME,"username").send_keys("hoang.nguyen")
+        self.driver.find_element(By.NAME,"password").send_keys("123456")
         self.driver.find_element(By.NAME,"submit").click()
         time.sleep(1)
 
@@ -48,8 +48,8 @@ class TestUpdateID(unittest.TestCase):
     def test_2(self): 
         self.driver.get('https://sso.hcmut.edu.vn/cas/login?service=http%3A%2F%2Fmybk.hcmut.edu.vn%2Fstinfo%2F')
 
-        self.driver.find_element(By.NAME,"username").send_keys("hoang.nguyen392")
-        self.driver.find_element(By.NAME,"password").send_keys("zmeb030902")
+        self.driver.find_element(By.NAME,"username").send_keys("hoang.nguyen")
+        self.driver.find_element(By.NAME,"password").send_keys("123456")
         self.driver.find_element(By.NAME,"submit").click()
         time.sleep(1)
 
@@ -67,8 +67,8 @@ class TestUpdateID(unittest.TestCase):
     def test_3(self): 
         self.driver.get('https://sso.hcmut.edu.vn/cas/login?service=http%3A%2F%2Fmybk.hcmut.edu.vn%2Fstinfo%2F')
 
-        self.driver.find_element(By.NAME,"username").send_keys("hoang.nguyen392")
-        self.driver.find_element(By.NAME,"password").send_keys("zmeb030902")
+        self.driver.find_element(By.NAME,"username").send_keys("hoang.nguyen")
+        self.driver.find_element(By.NAME,"password").send_keys("123456")
         self.driver.find_element(By.NAME,"submit").click()
         time.sleep(1)
 
@@ -92,8 +92,8 @@ class TestUpdateID(unittest.TestCase):
     def test_4(self): 
         self.driver.get('https://sso.hcmut.edu.vn/cas/login?service=http%3A%2F%2Fmybk.hcmut.edu.vn%2Fstinfo%2F')
 
-        self.driver.find_element(By.NAME,"username").send_keys("hoang.nguyen392")
-        self.driver.find_element(By.NAME,"password").send_keys("zmeb030902")
+        self.driver.find_element(By.NAME,"username").send_keys("hoang.nguyen")
+        self.driver.find_element(By.NAME,"password").send_keys("123456")
         self.driver.find_element(By.NAME,"submit").click()
         time.sleep(1)
 
@@ -114,8 +114,8 @@ class TestUpdateID(unittest.TestCase):
     def test_5(self): 
         self.driver.get('https://sso.hcmut.edu.vn/cas/login?service=http%3A%2F%2Fmybk.hcmut.edu.vn%2Fstinfo%2F')
 
-        self.driver.find_element(By.NAME,"username").send_keys("hoang.nguyen392")
-        self.driver.find_element(By.NAME,"password").send_keys("zmeb030902")
+        self.driver.find_element(By.NAME,"username").send_keys("hoang.nguyen")
+        self.driver.find_element(By.NAME,"password").send_keys("123456")
         self.driver.find_element(By.NAME,"submit").click()
         time.sleep(1)
 
