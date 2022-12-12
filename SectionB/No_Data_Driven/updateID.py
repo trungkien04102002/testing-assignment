@@ -111,7 +111,7 @@ class TestUpdateID(unittest.TestCase):
         time.sleep(1)
         self.driver.find_element(By.CLASS_NAME,"disabled")
 
-    def test_6(self): 
+    def test_5(self): 
         self.driver.get('https://sso.hcmut.edu.vn/cas/login?service=http%3A%2F%2Fmybk.hcmut.edu.vn%2Fstinfo%2F')
 
         self.driver.find_element(By.NAME,"username").send_keys("hoang.nguyen392")
