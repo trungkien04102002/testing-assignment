@@ -64,6 +64,9 @@ class TestUpdateID(unittest.TestCase):
         self.driver.execute_script("arguments[0].setAttribute('value','2021')", self.driver.find_element(By.ID,"cmndngaycapEditCMND"))
         self.driver.find_element(By.ID,"btn_save_cmnd").click()
 
+        time.sleep(1)
+        self.driver.find_element(By.CLASS_NAME,"disabled")
+
     def test_3(self): 
         self.driver.get('https://sso.hcmut.edu.vn/cas/login?service=http%3A%2F%2Fmybk.hcmut.edu.vn%2Fstinfo%2F')
 
@@ -82,9 +85,6 @@ class TestUpdateID(unittest.TestCase):
         self.driver.execute_script("arguments[0].setAttribute('value','')", self.driver.find_element(By.ID,"cmndnoicapEditCMND"))
         self.driver.execute_script("arguments[0].setAttribute('value','2021')", self.driver.find_element(By.ID,"cmndngaycapEditCMND"))
         self.driver.find_element(By.ID,"btn_save_cmnd").click()
-
-        time.sleep(1)
-        self.driver.find_element(By.CLASS_NAME,"disabled")
 
         time.sleep(1)
         self.driver.find_element(By.CLASS_NAME,"disabled")
