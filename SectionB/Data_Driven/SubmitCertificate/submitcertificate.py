@@ -41,7 +41,7 @@ class FileExcelReader:
         sheet.cell(row=rownum, column=colnum).value = data
         wordbook.save(self.file)
 
-class TestPrinTranscript():
+class SubmitCer():
   def setup_method(self):
     self.driver = webdriver.Chrome()
     self.driver.maximize_window()
@@ -93,7 +93,7 @@ class TestPrinTranscript():
 if __name__ == "__main__":
     excel = FileExcelReader('SecB_submitcert_data.xlsx', 'Sheet1')
 
-    test = TestPrinTranscript()
+    test = SubmitCer()
     test.setup_method()
     nRows = excel.getRowCount()
     for row in range(2, nRows + 1):

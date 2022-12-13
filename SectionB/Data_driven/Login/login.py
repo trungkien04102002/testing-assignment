@@ -90,8 +90,7 @@ class TestLogin():
         assert errorNotification.text == "Please enter your password."
         return True
     else:        
-        errorNotification = self.driver.find_element(By.XPATH,'//*[@id="msg"]')
-        assert (errorNotification.text == "Please enter your username."  )
+        assert self.driver.find_element(By.XPATH,'//*[@id="msg"]')
         return True
 
         

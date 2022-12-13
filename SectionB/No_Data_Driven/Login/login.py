@@ -124,8 +124,8 @@ class TestLogin(unittest.TestCase):
         submitBtn = self.driver.find_element(By.NAME,"submit")
         submitBtn.click()
         time.sleep(2)
-        errorNotification = self.driver.find_element(By.XPATH,'//*[@id="msg"]')
-        assert errorNotification.text == "Please enter your username."
+        assert self.driver.find_element(By.XPATH,'//*[@id="msg"]')
+    
 
         
     def tearDown(self):
