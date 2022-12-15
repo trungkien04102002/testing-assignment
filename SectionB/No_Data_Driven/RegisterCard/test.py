@@ -35,7 +35,7 @@ class TestRegisterWithDraw(unittest.TestCase):
             raise Exception(err.format(element_id))
 
     
-    def test_8(self): #done
+    def test_10(self): #done Fail
         self.driver.get('https://mybk.hcmut.edu.vn/app')
         self.driver.get('https://mybk.hcmut.edu.vn/app/sinh-vien/in-the-sinh-vien/dang-ky')
         selectAdd = self.driver.find_element(By.ID,'select2-cboNoiNhan-container')
@@ -47,7 +47,7 @@ class TestRegisterWithDraw(unittest.TestCase):
         receiver.send_keys('Đặng Quang Huy')
         time.sleep(1)
         numberphone = self.driver.find_element(By.ID,'txtSoDienThoai')
-        numberphone.send_keys('096956')
+        numberphone.send_keys('085400110')
         time.sleep(1)
         address = self.driver.find_element(By.ID,'txtDiaChi')
         address.send_keys('12 Nguyên Thị Lý, khu phố 1')
@@ -62,7 +62,6 @@ class TestRegisterWithDraw(unittest.TestCase):
         time.sleep(1)
         annoucetext = self.driver.find_element(By.XPATH,'//*[@id="swal2-content"]')
         assert annoucetext.text=="Số điện thoại không được xác thực"
-
    
     def tearDown(self):
         self.driver.quit()
