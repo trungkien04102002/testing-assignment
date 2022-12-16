@@ -278,6 +278,58 @@ class TestRegisterWithDraw(unittest.TestCase):
         annoucetext = self.driver.find_element(By.XPATH,'//*[@id="swal2-content"]')
         assert annoucetext.text=="Số điện thoại không được xác thực"
     
+    def test_11(self): #done 
+        self.driver.get('https://mybk.hcmut.edu.vn/app')
+        self.driver.get('https://mybk.hcmut.edu.vn/app/sinh-vien/in-the-sinh-vien/dang-ky')
+        selectAdd = self.driver.find_element(By.ID,'select2-cboNoiNhan-container')
+        selectAdd.click()
+        addSelect = self.driver.find_element(By.XPATH,'/html/body/span/span/span[2]/ul/li[1]')
+        addSelect.click()
+        time.sleep(1)
+        receiver = self.driver.find_element(By.ID,'txtTenNguoiNhan')
+        receiver.send_keys('Đặng Quang Huy')
+        time.sleep(1)
+        numberphone = self.driver.find_element(By.ID,'txtSoDienThoai')
+        numberphone.send_keys('0533861601')
+        time.sleep(1)
+        address = self.driver.find_element(By.ID,'txtDiaChi')
+        address.send_keys('12 Nguyên Thị Lý, khu phố 1')
+        time.sleep(1)
+        valiate = self.driver.find_element(By.XPATH,'//*[@id="chkCamKet"]')
+        valiate.click()
+        submitbtn = self.driver.find_element(By.XPATH,'//*[@id="btnDangKy"]')
+        submitbtn.click()
+        time.sleep(1)
+        assert self.driver.find_element(By.XPATH,'/html/body/div[4]/div')
+
+    def test_12(self): #done 
+        self.driver.get('https://mybk.hcmut.edu.vn/app')
+        self.driver.get('https://mybk.hcmut.edu.vn/app/sinh-vien/in-the-sinh-vien/dang-ky')
+        selectAdd = self.driver.find_element(By.ID,'select2-cboNoiNhan-container')
+        selectAdd.click()
+        addSelect = self.driver.find_element(By.XPATH,'/html/body/span/span/span[2]/ul/li[1]')
+        addSelect.click()
+        time.sleep(1)
+        receiver = self.driver.find_element(By.ID,'txtTenNguoiNhan')
+        receiver.send_keys('Đặng Quang Huy')
+        time.sleep(1)
+        numberphone = self.driver.find_element(By.ID,'txtSoDienThoai')
+        numberphone.send_keys('05338616018')
+        time.sleep(1)
+        address = self.driver.find_element(By.ID,'txtDiaChi')
+        address.send_keys('12 Nguyên Thị Lý, khu phố 1')
+        time.sleep(1)
+        valiate = self.driver.find_element(By.XPATH,'//*[@id="chkCamKet"]')
+        valiate.click()
+        submitbtn = self.driver.find_element(By.XPATH,'//*[@id="btnDangKy"]')
+        submitbtn.click()
+        time.sleep(1)
+        resubmit = self.driver.find_element(By.XPATH,'/html/body/div[4]/div/div[3]/button[1]')
+        resubmit.click()
+        time.sleep(1)
+        annoucetext = self.driver.find_element(By.XPATH,'//*[@id="swal2-content"]')
+        assert annoucetext.text=="Số điện thoại không được xác thực"
+    
 
 
 
