@@ -65,6 +65,7 @@ class TestRegisterSTCard():
   
   
     def test_registercard(self,flow, name, phoneNumber, address, validate, expectedResult):
+        time.sleep(2)
         self.driver.get('https://mybk.hcmut.edu.vn/app/')
         self.driver.get('https://mybk.hcmut.edu.vn/app/sinh-vien/in-the-sinh-vien/dang-ky')
 
@@ -88,14 +89,19 @@ class TestRegisterSTCard():
         else:
             selectAdd = self.driver.find_element(By.ID,'select2-cboNoiNhan-container')
             selectAdd.click()
+            time.sleep(1)
             addSelect = self.driver.find_element(By.XPATH,'/html/body/span/span/span[2]/ul/li[1]')
             addSelect.click()
+            time.sleep(1)
             receiver = self.driver.find_element(By.ID,'txtTenNguoiNhan')
             receiver.send_keys(name)
+            time.sleep(1)
             numberphone = self.driver.find_element(By.ID,'txtSoDienThoai')
             numberphone.send_keys(phoneNumber)
+            time.sleep(1)
             addresst = self.driver.find_element(By.ID,'txtDiaChi')
             addresst.send_keys(address)
+            time.sleep(1)
             if validate == "true":
                 valiate = self.driver.find_element(By.XPATH,'//*[@id="chkCamKet"]')
                 valiate.click()
