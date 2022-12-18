@@ -64,10 +64,12 @@ class TestRegAuth():
   
   
     def test_regauth(self,flow,reason,address,expectedResult):
+        time.sleep(2)
         self.driver.get('https://mybk.hcmut.edu.vn/app')
         self.driver.get('https://mybk.hcmut.edu.vn/app/sinh-vien/chung-nhan-sinh-vien/dang-ky')
 
         if flow == "Normal":
+            time.sleep(1)
             reasonInput = self.driver.find_element(By.ID,'select2-cboLoaiDangKy-container')
             reasonInput.click()
             time.sleep(1)
@@ -85,6 +87,7 @@ class TestRegAuth():
             assert self.driver.find_element(By.XPATH,'//*[@id="lstPhieuDangChoXuLy"]/tbody/tr')
         
         elif flow =="NoReason":
+            time.sleep(1)
             reasonInput = self.driver.find_element(By.ID,'select2-cboLoaiDangKy-container')
             time.sleep(1)
             addressInput = self.driver.find_element(By.ID,'select2-cboNoiNhan-container')
@@ -100,6 +103,7 @@ class TestRegAuth():
             assert annoucement.text == "Bạn chưa chọn lý do đăng ký chứng nhận sinh viên"
 
         elif flow == "NoAddress":
+            time.sleep(1)
             reasonInput = self.driver.find_element(By.ID,'select2-cboLoaiDangKy-container')
             reasonInput.click()
             time.sleep(1)
@@ -113,6 +117,7 @@ class TestRegAuth():
             assert annoucement.text == "Bạn chưa chọn nơi nhận kết quả"       
         
         elif flow == "ReSubmit":
+            time.sleep(1)
             reasonInput = self.driver.find_element(By.ID,'select2-cboLoaiDangKy-container')
             reasonInput = self.driver.find_element(By.ID,'select2-cboLoaiDangKy-container')
             reasonInput.click()
@@ -146,6 +151,7 @@ class TestRegAuth():
 
 
         else:
+            time.sleep(2)
             if (reason):
                 reasonInput = self.driver.find_element(By.ID,'select2-cboLoaiDangKy-container')
                 reasonInput.click()
@@ -166,9 +172,11 @@ class TestRegAuth():
             if (expectedResult == "Success"):
                 assert self.driver.find_element(By.XPATH,'//*[@id="lstPhieuDangChoXuLy"]/tbody/tr')
             elif (expectedResult == "NoRea"):
+                time.sleep(2)
                 annoucement = self.driver.find_element(By.XPATH,'/html/body/div[4]/div/div[2]/div[1]')
                 assert annoucement.text == "Bạn chưa chọn lý do đăng ký chứng nhận sinh viên"
             else:
+                time.sleep(2)
                 annoucement = self.driver.find_element(By.XPATH,'//*[@id="swal2-content"]')
                 assert annoucement.text == "Bạn chưa chọn nơi nhận kết quả"
 
